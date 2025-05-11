@@ -5,134 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WMMITAN Manufacturing Capabilities</title>
   <style>
-    :root {
-      --primary-color: #003366;
-      --accent-color: #005599;
-      --bg-color: #f4f4f4;
-      --text-color: #333;
-    }
     body {
       font-family: Arial, sans-serif;
-      background: var(--bg-color);
+      background: #f4f4f4;
       margin: 0;
       padding: 0;
-      color: var(--text-color);
     }
     header {
-      background: var(--primary-color);
+      background: #003366;
       color: #fff;
-      padding: 1.5rem 1rem;
+      padding: 20px;
       text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    header p {
-      font-size: 1rem;
-      margin-top: 0.5rem;
     }
     main {
       max-width: 960px;
-      margin: 2rem auto;
+      margin: 30px auto;
       background: #fff;
-      padding: 1.5rem;
+      padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
-    h2 {
-      color: var(--primary-color);
-      font-size: 1.4rem;
-    }
-    table {
+    select {
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 20px;
     }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.75rem;
-      text-align: left;
-      font-size: 0.95rem;
+    .content {
+      display: none;
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
     }
-    th {
-      background: var(--accent-color);
-      color: #fff;
-    }
-    tr:nth-child(even) {
-      background: #f9f9f9;
+    .visible {
+      display: block;
     }
     footer {
       text-align: center;
-      padding: 1rem;
-      font-size: 0.85rem;
+      padding: 15px;
+      font-size: 0.9em;
       color: #666;
-      background: #eaeaea;
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.4rem;
-      }
-      main {
-        padding: 1rem;
-      }
-      th, td {
-        font-size: 0.85rem;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>West Midlands Manufacturing Innovation & Technology Asset Network</h1>
-    <p>Connecting Innovators with Advanced Manufacturing Capabilities</p>
+    <h1>WMMITAN: Manufacturing Capabilities Showcase</h1>
+    <p>Explore the strengths of West Midlands manufacturers</p>
   </header>
   <main>
-    <h2>Key Capability Areas</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Capabilities</th>
-          <th>Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Core Manufacturing Processes</td>
-          <td>CNC, 3D printing, injection moulding, welding</td>
-          <td>Match fabrication needs for prototyping and production</td>
-        </tr>
-        <tr>
-          <td>Digital Manufacturing</td>
-          <td>IoT, CAD/CAM, digital twin, MES</td>
-          <td>Support smart and traceable production workflows</td>
-        </tr>
-        <tr>
-          <td>Sustainability & Clean Tech</td>
-          <td>Carbon tracking, renewable integration, circular economy</td>
-          <td>Facilitate cleantech and ESG-aligned innovation</td>
-        </tr>
-        <tr>
-          <td>Prototyping & Low-Volume</td>
-          <td>Rapid prototyping, pilot production</td>
-          <td>Enable early-stage product development and testing</td>
-        </tr>
-        <tr>
-          <td>Testing & Validation</td>
-          <td>Environmental stress, NDT, compliance labs</td>
-          <td>Ensure high standards of product performance</td>
-        </tr>
-        <tr>
-          <td>Innovation Collaboration</td>
-          <td>University partnerships, pilot co-development</td>
-          <td>Accelerate scale-up through collaborative R&D</td>
-        </tr>
-      </tbody>
-    </table>
+    <label for="categorySelect"><strong>Select a Capability Area:</strong></label>
+    <select id="categorySelect">
+      <option value="">-- Choose a Capability --</option>
+      <option value="core">Core Manufacturing Processes</option>
+      <option value="digital">Digital Manufacturing / Industry 4.0</option>
+      <option value="sustainability">Sustainability & Clean Tech</option>
+      <option value="prototype">Prototyping & Low-Volume Production</option>
+      <option value="testing">Testing & Validation</option>
+      <option value="collab">Innovation Collaboration</option>
+    </select>
+
+    <div id="core" class="content">
+      <h2>Core Manufacturing Processes</h2>
+      <p><strong>Capabilities:</strong> CNC machining, 3D printing, injection moulding, welding</p>
+      <p><strong>Purpose:</strong> Match fabrication needs for prototyping and production.</p>
+    </div>
+    <div id="digital" class="content">
+      <h2>Digital Manufacturing / Industry 4.0</h2>
+      <p><strong>Capabilities:</strong> IoT, CAD/CAM, digital twin, MES</p>
+      <p><strong>Purpose:</strong> Support smart and traceable production workflows.</p>
+    </div>
+    <div id="sustainability" class="content">
+      <h2>Sustainability & Clean Tech</h2>
+      <p><strong>Capabilities:</strong> Carbon tracking, renewable integration, circular economy</p>
+      <p><strong>Purpose:</strong> Facilitate cleantech and ESG-aligned innovation.</p>
+    </div>
+    <div id="prototype" class="content">
+      <h2>Prototyping & Low-Volume Production</h2>
+      <p><strong>Capabilities:</strong> Rapid prototyping, pilot production</p>
+      <p><strong>Purpose:</strong> Enable early-stage product development and testing.</p>
+    </div>
+    <div id="testing" class="content">
+      <h2>Testing & Validation</h2>
+      <p><strong>Capabilities:</strong> Environmental stress, NDT, compliance labs</p>
+      <p><strong>Purpose:</strong> Ensure high standards of product performance.</p>
+    </div>
+    <div id="collab" class="content">
+      <h2>Innovation Collaboration</h2>
+      <p><strong>Capabilities:</strong> University partnerships, pilot co-development</p>
+      <p><strong>Purpose:</strong> Accelerate scale-up through collaborative R&D.</p>
+    </div>
   </main>
   <footer>
-    &copy; 2025 WMMITAN | Powered by the West Midlands Manufacturing Network
+    &copy; 2025 WMMITAN | West Midlands Manufacturing Network
   </footer>
+  <script>
+    const select = document.getElementById("categorySelect");
+    const contents = document.querySelectorAll(".content");
+    select.addEventListener("change", function () {
+      contents.forEach(div => div.classList.remove("visible"));
+      if (this.value) {
+        const selected = document.getElementById(this.value);
+        if (selected) selected.classList.add("visible");
+      }
+    });
+  </script>
 </body>
 </html>
