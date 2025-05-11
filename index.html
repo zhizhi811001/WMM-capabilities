@@ -1,113 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WMMITAN Manufacturing Capabilities</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WMMITAN Manufacturer Submission Form</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #003366;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      max-width: 960px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-    select {
-      width: 100%;
-      padding: 10px;
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
-    .content {
-      display: none;
-      margin-top: 10px;
-      border-top: 1px solid #ccc;
-      padding-top: 15px;
-    }
-    .visible {
-      display: block;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: #666;
-    }
+    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
+    form { background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { color: #003366; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #005599; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #003366; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>WMMITAN: Manufacturing Capabilities Showcase</h1>
-    <p>Explore the strengths of West Midlands manufacturers</p>
-  </header>
-  <main>
-    <label for="categorySelect"><strong>Select a Capability Area:</strong></label>
-    <select id="categorySelect">
-      <option value="">-- Choose a Capability --</option>
-      <option value="core">Core Manufacturing Processes</option>
-      <option value="digital">Digital Manufacturing / Industry 4.0</option>
-      <option value="sustainability">Sustainability & Clean Tech</option>
-      <option value="prototype">Prototyping & Low-Volume Production</option>
-      <option value="testing">Testing & Validation</option>
-      <option value="collab">Innovation Collaboration</option>
-    </select>
+  <form name="submit-to-google-sheet">
+    <h2>Company Profile</h2>
+    <label>Legal Name</label><input name="legal_name" type="text" required>
+    <label>Trading Name</label><input name="trading_name" type="text">
+    <label>Company Number</label><input name="company_number" type="text">
+    <label>Contact Person</label><input name="contact_person" type="text">
+    <label>Email</label><input name="email" type="email" required>
+    <label>Phone</label><input name="phone" type="text">
+    <label>Year Founded</label><input name="year_founded" type="number">
 
-    <div id="core" class="content">
-      <h2>Core Manufacturing Processes</h2>
-      <p><strong>Capabilities:</strong> CNC machining, 3D printing, injection moulding, welding</p>
-      <p><strong>Purpose:</strong> Match fabrication needs for prototyping and production.</p>
-    </div>
-    <div id="digital" class="content">
-      <h2>Digital Manufacturing / Industry 4.0</h2>
-      <p><strong>Capabilities:</strong> IoT, CAD/CAM, digital twin, MES</p>
-      <p><strong>Purpose:</strong> Support smart and traceable production workflows.</p>
-    </div>
-    <div id="sustainability" class="content">
-      <h2>Sustainability & Clean Tech</h2>
-      <p><strong>Capabilities:</strong> Carbon tracking, renewable integration, circular economy</p>
-      <p><strong>Purpose:</strong> Facilitate cleantech and ESG-aligned innovation.</p>
-    </div>
-    <div id="prototype" class="content">
-      <h2>Prototyping & Low-Volume Production</h2>
-      <p><strong>Capabilities:</strong> Rapid prototyping, pilot production</p>
-      <p><strong>Purpose:</strong> Enable early-stage product development and testing.</p>
-    </div>
-    <div id="testing" class="content">
-      <h2>Testing & Validation</h2>
-      <p><strong>Capabilities:</strong> Environmental stress, NDT, compliance labs</p>
-      <p><strong>Purpose:</strong> Ensure high standards of product performance.</p>
-    </div>
-    <div id="collab" class="content">
-      <h2>Innovation Collaboration</h2>
-      <p><strong>Capabilities:</strong> University partnerships, pilot co-development</p>
-      <p><strong>Purpose:</strong> Accelerate scale-up through collaborative R&D.</p>
-    </div>
-  </main>
-  <footer>
-    &copy; 2025 WMMITAN | West Midlands Manufacturing Network
-  </footer>
+    <h2>Manufacturing Capabilities</h2>
+    <label>Core Capabilities</label>
+    <textarea name="capabilities" rows="4" placeholder="e.g., CNC, 3D printing, injection moulding..."></textarea>
+
+    <h2>Sector Experience</h2>
+    <label>Experience Areas</label>
+    <textarea name="sectors" rows="3" placeholder="e.g., automotive, aerospace, clean tech..."></textarea>
+
+    <h2>Additional Notes</h2>
+    <textarea name="notes" rows="5" placeholder="Any other relevant information..."></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
   <script>
-    const select = document.getElementById("categorySelect");
-    const contents = document.querySelectorAll(".content");
-    select.addEventListener("change", function () {
-      contents.forEach(div => div.classList.remove("visible"));
-      if (this.value) {
-        const selected = document.getElementById(this.value);
-        if (selected) selected.classList.add("visible");
-      }
+    const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_URL_HERE/exec'; // Replace with your Web App URL
+    const form = document.forms['submit-to-google-sheet'];
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert('Thank you! Your form was submitted successfully.'))
+        .catch(error => alert('Submission failed. Please try again.'));
     });
   </script>
 </body>
