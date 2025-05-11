@@ -117,22 +117,35 @@
 <!-- Page 4: Manufacturing Processes -->
 <div class="page">
   <h2>4. Manufacturing Processes</h2>
-  
+  <p>Core capabilities for production, critical for matchmaking with startups.</p>
+
+  <!-- Process Capabilities -->
   <label class="required">Process Capabilities</label>
-  <select name="process_capabilities" required>
-    <option value="">--Select--</option>
-    <option>Machining</option>
-    <option>Fabrication</option>
-    <option>Assembly</option>
+  <select name="process_capabilities[]" multiple required>
+    <option>CNC machining (mill)</option>
+    <option>CNC machining (turn)</option>
+    <option>CNC machining (5-axis)</option>
+    <option>Sheet-metal</option>
+    <option>Stamping</option>
+    <option>Injection moulding</option>
+    <option>Additive manufacturing</option>
+    <option>Composites lay-up</option>
+    <option>Casting</option>
+    <option>Heat treatment</option>
     <option>Welding</option>
-    <option>3D Printing</option>
+    <option>Surface finishing</option>
+    <option>PCB assembly</option>
+    <option>Harnessing</option>
+    <option>Clean-room assembly</option>
     <option>Other</option>
   </select>
-  <textarea name="process_capabilities_details" placeholder="Please specify..."></textarea>
+  <textarea name="process_capabilities_details" placeholder="e.g., Vacuum-brazing Nadcap HT-CB"></textarea>
 
-  <label>Plant List</label>
-  <textarea name="plant_list"></textarea>
+  <!-- Plant List -->
+  <label>Plant List (Key Equipment)</label>
+  <textarea name="plant_list" placeholder="e.g., Machine: Haas VF-4, Envelope: 1270x508x635mm, Tolerance: ±0.005mm"></textarea>
 
+  <!-- Automation Level -->
   <label class="required">Automation Level</label>
   <select name="automation_level" required>
     <option value="">--Select--</option>
@@ -141,37 +154,26 @@
     <option>Fully automated</option>
   </select>
 
+  <!-- Special Processes -->
   <label>Special Processes</label>
-  <select name="special_processes">
-    <option value="">--Select--</option>
-    <option>Heat Treatment</option>
-    <option>Surface Coating</option>
-    <option>Cleanroom Assembly</option>
+  <select name="special_processes[]" multiple>
+    <option>NDT</option>
+    <option>Chemical Processing</option>
+    <option>Thermal Spray</option>
+    <option>Anodizing</option>
     <option>Other</option>
   </select>
-  <textarea name="special_processes_details" placeholder="Please specify..."></textarea>
+  <textarea name="special_processes_details" placeholder="e.g., Fluorescent penetrant inspection per Nadcap AC7114/1"></textarea>
 
-  <label>Production Envelope</label>
-  <input name="production_envelope">
+  <!-- Production Envelope -->
+  <label>Production Envelope (mm)</label>
+  <input type="number" step="0.01" name="production_envelope_x" placeholder="X (mm)">
+  <input type="number" step="0.01" name="production_envelope_y" placeholder="Y (mm)">
+  <input type="number" step="0.01" name="production_envelope_z" placeholder="Z (mm)">
 
-  <label>Tolerances Achievable</label>
-  <input name="tolerances">
+  <!-- Tolerances Achievable -->
+  <label>Tolerances Achievable (e.
 
-  <label class="required">Materials Processed</label>
-  <select name="materials_processed" required>
-    <option value="">--Select--</option>
-    <option>Metals</option>
-    <option>Plastics</option>
-    <option>Composites</option>
-    <option>Other</option>
-  </select>
-  <textarea name="materials_processed_details" placeholder="Please specify..."></textarea>
-
-  <div class="nav">
-    <button type="button" onclick="prevPage()">&laquo; Back</button>
-    <button type="button" onclick="nextPage()">Next &raquo;</button>
-  </div>
-</div>
 
 <!-- Page 5: Product Development & NPI -->
 <div class="page">
