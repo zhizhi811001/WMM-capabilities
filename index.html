@@ -5,24 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WMMITAN Manufacturing Capabilities</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    header { background: #003366; color: #fff; padding: 20px; text-align: center; }
-    main { max-width: 1000px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 8px; }
-    h2 { color: #003366; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 12px; text-align: left; }
-    th { background: #005599; color: #fff; }
-    tr:nth-child(even) { background: #f9f9f9; }
-    footer { text-align: center; padding: 15px; font-size: 0.9em; color: #666; }
+    :root {
+      --primary-color: #003366;
+      --accent-color: #005599;
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-color);
+      margin: 0;
+      padding: 0;
+      color: var(--text-color);
+    }
+    header {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    header p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.4rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    th {
+      background: var(--accent-color);
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+      background: #eaeaea;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      main {
+        padding: 1rem;
+      }
+      th, td {
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>West Midlands Manufacturing Innovation & Technology Asset Network (WMMITAN)</h1>
-    <p>Showcasing Key Manufacturing Capabilities in the Region</p>
+    <h1>West Midlands Manufacturing Innovation & Technology Asset Network</h1>
+    <p>Connecting Innovators with Advanced Manufacturing Capabilities</p>
   </header>
   <main>
-    <h2>Core Capability Areas</h2>
+    <h2>Key Capability Areas</h2>
     <table>
       <thead>
         <tr>
@@ -66,7 +132,7 @@
     </table>
   </main>
   <footer>
-    &copy; 2025 WMMITAN | Connecting Innovators & Manufacturers in the West Midlands
+    &copy; 2025 WMMITAN | Powered by the West Midlands Manufacturing Network
   </footer>
 </body>
 </html>
