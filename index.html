@@ -172,39 +172,89 @@
   <input type="number" step="0.01" name="production_envelope_z" placeholder="Z (mm)">
 
   <!-- Tolerances Achievable -->
-  <label>Tolerances Achievable (e.
+  <label>Tolerances Achievable (e.g., ±0.001mm)</label>
+  <input type="number" step="0.0001" name="tolerances">
 
+  <!-- Materials Processed -->
+  <label class="required">Materials Processed</label>
+  <select name="materials_processed[]" multiple required>
+    <option>Aluminum</option>
+    <option>Titanium</option>
+    <option>Stainless steel</option>
+    <option>Composites</option>
+    <option>Thermoplastics</option>
+    <option>Thermosets</option>
+    <option>Copper alloys</option>
+    <option>Other</option>
+  </select>
+  <textarea name="materials_processed_details" placeholder="e.g., CFRP (autoclave cured), PEEK, 316L"></textarea>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <button type="button" onclick="prevPage()">&laquo; Back</button>
+    <button type="button" onclick="nextPage()">Next &raquo;</button>
+  </div>
+</div>
 
 <!-- Page 5: Product Development & NPI -->
 <div class="page">
-  <h2>5. Product Development & NPI</h2>
+  <h2>5. Product Development & NPI (New Product Introduction)</h2>
+  <p>Capabilities aligned with APQP/AS9145 phases for product development.</p>
 
-  <label><input type="checkbox" name="npi_phase1"> Phase 1 – Planning</label>
-  <input name="npi_phase1_evidence" placeholder="Provide evidence or examples...">
+  <!-- Phase 1 – Planning -->
+  <label>Phase 1 – Planning</label>
+  <div>
+    <label><input type="radio" name="phase1_planning" value="Yes"> Yes</label>
+    <label><input type="radio" name="phase1_planning" value="No"> No</label>
+  </div>
+  <textarea name="phase1_planning_details" placeholder="e.g., Risk register template ID: RSK-2023"></textarea>
 
-  <label><input type="checkbox" name="npi_phase2"> Phase 2 – Product Design</label>
-  <input name="npi_phase2_evidence" placeholder="Provide evidence or examples...">
+  <!-- Phase 2 – Product Design -->
+  <label>Phase 2 – Product Design</label>
+  <div>
+    <label><input type="radio" name="phase2_design" value="Yes"> Yes</label>
+    <label><input type="radio" name="phase2_design" value="No"> No</label>
+  </div>
+  <textarea name="phase2_design_details" placeholder="e.g., DFMEA report ID: DF-2024-01"></textarea>
 
-  <label><input type="checkbox" name="npi_phase3"> Phase 3 – Process Design</label>
-  <input name="npi_phase3_evidence" placeholder="Provide evidence or examples...">
+  <!-- Phase 3 – Process Design -->
+  <label>Phase 3 – Process Design</label>
+  <div>
+    <label><input type="radio" name="phase3_process" value="Yes"> Yes</label>
+    <label><input type="radio" name="phase3_process" value="No"> No</label>
+  </div>
+  <textarea name="phase3_process_details" placeholder="e.g., Control Plan ID: CP-2024"></textarea>
 
-  <label><input type="checkbox" name="npi_phase4"> Phase 4 – Validation</label>
-  <input name="npi_phase4_evidence" placeholder="Provide evidence or examples...">
+  <!-- Phase 4 – Validation -->
+  <label>Phase 4 – Validation</label>
+  <div>
+    <label><input type="radio" name="phase4_validation" value="Yes"> Yes</label>
+    <label><input type="radio" name="phase4_validation" value="No"> No</label>
+  </div>
+  <textarea name="phase4_validation_details" placeholder="e.g., PPAP Level 3, Cpk=1.75"></textarea>
 
-  <label><input type="checkbox" name="npi_phase5"> Phase 5 – Launch & CI</label>
-  <input name="npi_phase5_evidence" placeholder="Provide evidence or examples...">
+  <!-- Phase 5 – Launch & Continuous Improvement -->
+  <label>Phase 5 – Launch & CI</label>
+  <div>
+    <label><input type="radio" name="phase5_launch" value="Yes"> Yes</label>
+    <label><input type="radio" name="phase5_launch" value="No"> No</label>
+  </div>
+  <textarea name="phase5_launch_details" placeholder="e.g., KPI dashboard: OTIF 98%"></textarea>
 
+  <!-- Design Tools -->
   <label>Design Tools</label>
-  <select name="design_tools">
-    <option value="">--Select--</option>
-    <option>CAD (e.g., SolidWorks)</option>
-    <option>CAE (e.g., ANSYS)</option>
-    <option>PLM Systems</option>
-    <option>CAM Software</option>
+  <select name="design_tools[]" multiple>
+    <option>SolidWorks</option>
+    <option>CATIA</option>
+    <option>AutoCAD</option>
+    <option>ANSYS</option>
+    <option>NX</option>
+    <option>Creo</option>
     <option>Other</option>
   </select>
-  <textarea name="design_tools_details" placeholder="Please specify tools and applications..."></textarea>
+  <textarea name="design_tools_details" placeholder="e.g., SolidWorks 2023 Premium, CATIA V5 R2021"></textarea>
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
@@ -215,134 +265,184 @@
 <!-- Page 6: Inspection & Metrology -->
 <div class="page">
   <h2>6. Inspection & Metrology</h2>
+  <p>Quality assurance and testing capabilities.</p>
 
+  <!-- Inspection Methods -->
   <label class="required">Inspection Methods</label>
-  <select name="inspection_methods" required>
-    <option value="">--Select--</option>
-    <option>Visual</option>
-    <option>Dimensional</option>
+  <select name="inspection_methods[]" multiple required>
+    <option>In-house</option>
+    <option>Outsourced</option>
     <option>CMM</option>
-    <option>Laser Scanning</option>
+    <option>Gauges</option>
+    <option>NDT</option>
     <option>Other</option>
   </select>
-  <textarea name="inspection_methods_details" placeholder="Provide details on inspection methods..."></textarea>
+  <textarea name="inspection_methods_details" placeholder="e.g., Zeiss CMM, Mitutoyo gauges, in-house NDT technician"></textarea>
 
-  <label><input type="checkbox" name="accredited_labs"> Accredited Labs</label>
-  <textarea name="accredited_labs_details" placeholder="List lab names, accreditations, and scope..."></textarea>
+  <!-- Accredited Labs -->
+  <label>Accredited Labs</label>
+  <div>
+    <label><input type="radio" name="accredited_labs" value="Yes"> Yes</label>
+    <label><input type="radio" name="accredited_labs" value="No"> No</label>
+  </div>
+  <textarea name="accredited_labs_details" placeholder="e.g., SGS Lab ISO 17025 certified for tensile and fatigue testing"></textarea>
 
+  <!-- Test Rigs -->
   <label>Test Rigs</label>
-  <textarea name="test_rigs" placeholder="Describe available test rigs and capabilities..."></textarea>
+  <textarea name="test_rigs" placeholder="e.g., Thermal cycling rig, -40°C to 150°C"></textarea>
 
+  <!-- NDT Methods -->
   <label>NDT Methods</label>
-  <select name="ndt_methods">
-    <option value="">--Select--</option>
-    <option>Ultrasonic Testing</option>
-    <option>Magnetic Particle</option>
-    <option>Dye Penetrant</option>
-    <option>Radiographic</option>
+  <select name="ndt_methods[]" multiple>
+    <option>Ultrasonic</option>
+    <option>Radiographic (X-ray)</option>
+    <option>Dye penetrant</option>
+    <option>Magnetic particle</option>
+    <option>Eddy current</option>
     <option>Other</option>
   </select>
-  <textarea name="ndt_methods_details" placeholder="Provide details on NDT methods..."></textarea>
+  <textarea name="ndt_methods_details" placeholder="e.g., Ultrasonic testing with GE USM Go+ system"></textarea>
 
-  <label><input type="checkbox" name="msa_compliance"> MSA Compliance</label>
-  <textarea name="msa_compliance_evidence" placeholder="Provide evidence or documentation of MSA compliance..."></textarea>
+  <!-- MSA Compliance -->
+  <label>MSA Compliance</label>
+  <div>
+    <label><input type="radio" name="msa_compliance" value="Yes"> Yes</label>
+    <label><input type="radio" name="msa_compliance" value="No"> No</label>
+  </div>
+  <textarea name="msa_compliance_details" placeholder="e.g., GR&R completed for all critical gauges in 2023"></textarea>
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
   </div>
 </div>
+
 
 <!-- Page 7: Quality & Continuous Improvement -->
 <div class="page">
   <h2>7. Quality & Continuous Improvement</h2>
+  <p>Tools and methodologies for quality and process improvement.</p>
 
-  <label><input type="checkbox" name="spc_implementation"> SPC Implementation</label>
-  <textarea name="spc_evidence" placeholder="Provide evidence of SPC implementation..."></textarea>
+  <!-- SPC Implementation -->
+  <label>SPC Implementation</label>
+  <div>
+    <label><input type="radio" name="spc_implementation" value="Yes"> Yes</label>
+    <label><input type="radio" name="spc_implementation" value="No"> No</label>
+  </div>
+  <textarea name="spc_implementation_details" placeholder="e.g., X-bar/R charts on CMM-001, Cpk=1.75"></textarea>
 
+  <!-- Six Sigma Levels -->
   <label>Six Sigma Levels</label>
-  <select name="six_sigma_level">
-    <option value="">--Select--</option>
-    <option>White Belt</option>
-    <option>Yellow Belt</option>
+  <select name="six_sigma_levels[]" multiple>
     <option>Green Belt</option>
     <option>Black Belt</option>
     <option>Master Black Belt</option>
-    <option>Not Applicable</option>
-  </select>
-  <textarea name="six_sigma_details" placeholder="Describe Six Sigma initiatives and training levels..."></textarea>
-
-  <label>CI Tools</label>
-  <select name="ci_tools">
-    <option value="">--Select--</option>
-    <option>Kaizen</option>
-    <option>5S</option>
-    <option>Poka-Yoke</option>
-    <option>PDCA</option>
-    <option>Value Stream Mapping</option>
+    <option>Yellow Belt</option>
     <option>Other</option>
   </select>
-  <textarea name="ci_tools_details" placeholder="Provide specifics about CI tools used..."></textarea>
+  <textarea name="six_sigma_levels_details" placeholder="e.g., 2 Green Belts in production, 1 Black Belt in QA"></textarea>
 
-  <label>VDA 6.3 Score</label>
-  <input name="vda_score" type="text" placeholder="e.g., 85%">
+  <!-- CI Tools -->
+  <label>Continuous Improvement Tools</label>
+  <select name="ci_tools[]" multiple>
+    <option>8-D</option>
+    <option>Kaizen</option>
+    <option>Poka-yoke</option>
+    <option>PDCA</option>
+    <option>FMEA</option>
+    <option>Other</option>
+  </select>
+  <textarea name="ci_tools_details" placeholder="e.g., Kaizen workshops held quarterly, 8-D for NCRs"></textarea>
 
-  <label><input type="checkbox" name="layered_audits"> Layered Process Audits</label>
-  <textarea name="layered_audits_details" placeholder="Describe scope and frequency of audits..."></textarea>
+  <!-- VDA 6.3 Score -->
+  <label>VDA 6.3 Process Audit Score (0–100)</label>
+  <input type="number" name="vda_score" min="0" max="100" step="0.1" placeholder="e.g., 85.5">
 
+  <!-- Layered Process Audits -->
+  <label>Layered Process Audits</label>
+  <div>
+    <label><input type="radio" name="layered_audits" value="Yes"> Yes</label>
+    <label><input type="radio" name="layered_audits" value="No"> No</label>
+  </div>
+  <textarea name="layered_audits_details" placeholder="e.g., Weekly audit checklists by line leaders and managers"></textarea>
+
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
   </div>
 </div>
 
+
 <!-- Page 8: Supply-Chain & Logistics -->
 <div class="page">
   <h2>8. Supply-Chain & Logistics</h2>
+  <p>Capabilities for supply chain management and logistics.</p>
 
+  <!-- ERP/MRP System -->
   <label>ERP/MRP System</label>
-  <select name="erp_mrp_system">
-    <option value="">--Select--</option>
+  <select name="erp_systems[]" multiple>
     <option>SAP</option>
     <option>Oracle</option>
+    <option>Epicor</option>
     <option>Microsoft Dynamics</option>
     <option>Infor</option>
-    <option>Custom/In-house</option>
-    <option>None</option>
+    <option>Odoo</option>
+    <option>Other</option>
   </select>
-  <textarea name="erp_mrp_details" placeholder="Provide details on implementation and coverage..."></textarea>
+  <textarea name="erp_systems_details" placeholder="e.g., SAP S/4HANA integrated with warehouse module"></textarea>
 
-  <label><input type="checkbox" name="edi_capability"> EDI Capability</label>
+  <!-- EDI Capability -->
+  <label>EDI Capability</label>
+  <div>
+    <label><input type="radio" name="edi_capability" value="Yes"> Yes</label>
+    <label><input type="radio" name="edi_capability" value="No"> No</label>
+  </div>
 
-  <label><input type="checkbox" name="kanban_consignment"> Kanban/Consignment</label>
-  <textarea name="kanban_details" placeholder="Provide details about Kanban or consignment systems..."></textarea>
+  <!-- Kanban/Consignment -->
+  <label>Kanban / Consignment Support</label>
+  <div>
+    <label><input type="radio" name="kanban_support" value="Yes"> Yes</label>
+    <label><input type="radio" name="kanban_support" value="No"> No</label>
+  </div>
+  <textarea name="kanban_support_details" placeholder="e.g., Kanban bins managed weekly with Tier-1 supplier"></textarea>
 
-  <label>Lead Times</label>
-  <input type="text" name="lead_times" placeholder="e.g., 3–6 weeks">
+  <!-- Lead Times -->
+  <label>Lead Times (days)</label>
+  <input type="number" name="lead_time_min" min="0" placeholder="Min">
+  <input type="number" name="lead_time_max" min="0" placeholder="Max">
 
-  <label>Inventory Turns</label>
-  <input type="text" name="inventory_turns" placeholder="e.g., 8/year">
+  <!-- Inventory Turns -->
+  <label>Inventory Turns (per year)</label>
+  <input type="number" step="0.1" min="0" name="inventory_turns" placeholder="e.g., 8.5">
 
-  <label>Incoterms</label>
+  <!-- Incoterms -->
+  <label>Preferred Incoterms</label>
   <select name="incoterms">
     <option value="">--Select--</option>
     <option>EXW</option>
     <option>FCA</option>
-    <option>CPT</option>
-    <option>CIP</option>
+    <option>FOB</option>
+    <option>CIF</option>
     <option>DAP</option>
     <option>DDP</option>
-    <option>FOB</option>
-    <option>CFR</option>
-    <option>CIF</option>
+    <option>Other</option>
   </select>
 
-  <label>Approved Subtiers</label>
-  <textarea name="approved_subtiers" placeholder="List key suppliers and approval status..."></textarea>
+  <!-- Approved Subtiers -->
+  <label>Approved Subtier Suppliers</label>
+  <textarea name="approved_subtiers" placeholder="e.g., Approved vendors list includes XYZ Fasteners, ABC Machining Co."></textarea>
 
-  <label><input type="checkbox" name="reach_rohs"> REACH/RoHS Compliance</label>
-  <textarea name="reach_rohs_evidence" placeholder="Provide documentation or summary of compliance..."></textarea>
+  <!-- REACH/RoHS Compliance -->
+  <label>REACH / RoHS Compliance</label>
+  <div>
+    <label><input type="radio" name="compliance_reach_rohs" value="Yes"> Yes</label>
+    <label><input type="radio" name="compliance_reach_rohs" value="No"> No</label>
+  </div>
+  <textarea name="compliance_reach_rohs_details" placeholder="e.g., All components compliant with REACH Annex XVII, RoHS 3 certified"></textarea>
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
@@ -352,31 +452,41 @@
 <!-- Page 9: Capacity & Performance -->
 <div class="page">
   <h2>9. Capacity & Performance</h2>
+  <p>Production capacity and performance metrics.</p>
 
-  <label>Takt Time</label>
-  <input type="text" name="takt_time" placeholder="e.g., 2 minutes per unit">
+  <!-- Takt Time -->
+  <label>Takt Time (seconds per unit)</label>
+  <input type="number" name="takt_time" step="0.1" min="0.01" placeholder="e.g., 45.5">
 
-  <label>Theoretical Capacity</label>
-  <input type="text" name="theoretical_capacity" placeholder="e.g., 10,000 units/month">
+  <!-- Theoretical Capacity -->
+  <label>Theoretical Capacity (units/month)</label>
+  <input type="number" name="theoretical_capacity" min="0" placeholder="e.g., 10000">
 
-  <label>Actual Capacity</label>
-  <input type="text" name="actual_capacity" placeholder="e.g., 8,000 units/month">
+  <!-- Actual Capacity -->
+  <label>Actual Capacity (units/month)</label>
+  <input type="number" name="actual_capacity" min="0" placeholder="e.g., 8000">
 
-  <label>OEE</label>
-  <input type="text" name="oee" placeholder="e.g., 85%">
+  <!-- OEE -->
+  <label>Overall Equipment Effectiveness (OEE %)</label>
+  <input type="number" name="oee" step="0.1" min="0" max="100" placeholder="e.g., 85.4">
 
-  <label>Peak Shift Pattern</label>
-  <input type="text" name="peak_shift_pattern" placeholder="e.g., 3 shifts/day, 24/7">
+  <!-- Peak Shift Pattern -->
+  <label>Peak Shift Pattern (shifts/day)</label>
+  <input type="number" name="peak_shift_pattern" min="1" max="3" placeholder="e.g., 2">
 
-  <label>OTIF %</label>
-  <input type="text" name="otif" placeholder="e.g., 98%">
+  <!-- OTIF % -->
+  <label>On-Time In-Full (OTIF %)</label>
+  <input type="number" name="otif" step="0.1" min="0" max="100" placeholder="e.g., 97.2">
 
-  <label>PPM</label>
-  <input type="text" name="ppm" placeholder="e.g., 150">
+  <!-- PPM -->
+  <label>Parts Per Million (PPM) Defect Rate</label>
+  <input type="number" name="ppm" min="0" placeholder="e.g., 1200">
 
-  <label>Warranty Returns</label>
-  <input type="text" name="warranty_returns" placeholder="e.g., 0.2% annually">
+  <!-- Warranty Returns -->
+  <label>Warranty Returns (% per year)</label>
+  <input type="number" name="warranty_returns" step="0.1" min="0" max="100" placeholder="e.g., 0.8">
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
@@ -386,97 +496,153 @@
 <!-- Page 10: Digital & Industry 4.0 Readiness -->
 <div class="page">
   <h2>10. Digital & Industry 4.0 Readiness</h2>
+  <p>Digital technology adoption for advanced manufacturing.</p>
 
+  <!-- CAD/CAM/PLM Integration -->
   <label>CAD/CAM/PLM Integration</label>
   <select name="cad_cam_plm_integration">
     <option value="">--Select--</option>
-    <option>Fully Integrated</option>
-    <option>Partially Integrated</option>
-    <option>Not Integrated</option>
+    <option>None</option>
+    <option>Partial</option>
+    <option>Full</option>
   </select>
-  <textarea name="cad_cam_plm_systems" placeholder="List specific systems used (e.g., Siemens NX, CATIA, Windchill)"></textarea>
+  <textarea name="cad_cam_plm_integration_details" placeholder="e.g., Siemens Teamcenter integrated with NX CAD and CAM module"></textarea>
 
-  <label><input type="checkbox" name="mes"> MES</label>
-  <input type="text" name="mes_system" placeholder="Enter MES system name">
+  <!-- MES -->
+  <label>Manufacturing Execution System (MES)</label>
+  <div>
+    <label><input type="radio" name="mes_usage" value="Yes"> Yes</label>
+    <label><input type="radio" name="mes_usage" value="No"> No</label>
+  </div>
+  <textarea name="mes_usage_details" placeholder="e.g., Using Rockwell FactoryTalk MES for real-time scheduling"></textarea>
 
-  <label><input type="checkbox" name="iot_sensorisation"> IoT Sensorisation</label>
-  <textarea name="iot_details" placeholder="Describe IoT deployment (e.g., machine monitoring, predictive maintenance)"></textarea>
+  <!-- IoT Sensorisation -->
+  <label>IoT Sensorisation</label>
+  <div>
+    <label><input type="radio" name="iot_sensorisation" value="Yes"> Yes</label>
+    <label><input type="radio" name="iot_sensorisation" value="No"> No</label>
+  </div>
+  <textarea name="iot_sensorisation_details" placeholder="e.g., Vibration and thermal sensors on CNC spindles, MQTT to cloud dashboard"></textarea>
 
-  <label><input type="checkbox" name="cloud_analytics"> Cloud Analytics</label>
-  <textarea name="cloud_platforms" placeholder="List platforms (e.g., AWS, Azure, Google Cloud)"></textarea>
+  <!-- Cloud Analytics -->
+  <label>Cloud-Based Analytics</label>
+  <div>
+    <label><input type="radio" name="cloud_analytics" value="Yes"> Yes</label>
+    <label><input type="radio" name="cloud_analytics" value="No"> No</label>
+  </div>
+  <textarea name="cloud_analytics_details" placeholder="e.g., AWS IoT Core + QuickSight for shopfloor KPIs"></textarea>
 
-  <label><input type="checkbox" name="digital_twin"> Digital Twin</label>
-  <textarea name="digital_twin_apps" placeholder="Describe use cases (e.g., virtual prototyping, production simulation)"></textarea>
+  <!-- Digital Twin -->
+  <label>Digital Twin</label>
+  <div>
+    <label><input type="radio" name="digital_twin" value="Yes"> Yes</label>
+    <label><input type="radio" name="digital_twin" value="No"> No</label>
+  </div>
+  <textarea name="digital_twin_details" placeholder="e.g., Twin of paint line created in Siemens Plant Simulation"></textarea>
 
-  <label><input type="checkbox" name="cybersecurity_cert"> Cyber-Security Certification</label>
-  <textarea name="cybersecurity_details" placeholder="Provide certification details (e.g., ISO 27001)"></textarea>
+  <!-- Cyber-Security Certification -->
+  <label>Cyber-Security Certification</label>
+  <div>
+    <label><input type="radio" name="cyber_certification" value="Yes"> Yes</label>
+    <label><input type="radio" name="cyber_certification" value="No"> No</label>
+  </div>
+  <textarea name="cyber_certification_details" placeholder="e.g., ISO 27001 certified by TÜV Rheinland, annual penetration testing"></textarea>
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
   </div>
 </div>
+
 
 <!-- Page 11: Sustainability / ESG -->
 <div class="page">
   <h2>11. Sustainability / ESG</h2>
+  <p>Environmental, social, and governance metrics, critical for clean tech alignment.</p>
 
-  <label>Carbon Footprint Baseline</label>
-  <input type="text" name="carbon_footprint">
+  <!-- Carbon Footprint Baseline -->
+  <label>Carbon Footprint Baseline (tCO₂e, Scope 1–3)</label>
+  <input type="number" name="carbon_footprint" step="0.1" min="0" placeholder="e.g., 1250.5">
 
-  <label>Energy Mix</label>
-  <input type="text" name="energy_mix">
+  <!-- Energy Mix -->
+  <label>Renewable Energy Share (%)</label>
+  <input type="number" name="energy_mix" step="0.1" min="0" max="100" placeholder="e.g., 45.0">
 
-  <label>Waste Recycling %</label>
-  <input type="text" name="waste_recycling">
+  <!-- Waste Recycling % -->
+  <label>Waste Recycling (%)</label>
+  <input type="number" name="waste_recycling" step="0.1" min="0" max="100" placeholder="e.g., 78.5">
 
+  <!-- Social Value Programmes -->
   <label>Social Value Programmes</label>
-  <textarea name="social_value_programmes"></textarea>
+  <textarea name="social_value_programmes" placeholder="e.g., Apprenticeship schemes, local STEM outreach, inclusive hiring initiatives"></textarea>
 
-  <label><input type="checkbox" name="modern_slavery_compliance"> Modern Slavery Compliance</label>
-  <textarea name="modern_slavery_evidence" placeholder="Provide evidence or links to statements"></textarea>
+  <!-- Modern Slavery Compliance -->
+  <label>Modern Slavery Compliance</label>
+  <div>
+    <label><input type="radio" name="modern_slavery_compliance" value="Yes"> Yes</label>
+    <label><input type="radio" name="modern_slavery_compliance" value="No"> No</label>
+  </div>
+  <textarea name="modern_slavery_compliance_details" placeholder="e.g., Statement published 2024, third-party audit by Sedex"></textarea>
 
+  <!-- ESG Certifications -->
   <label>ESG Certifications</label>
-  <select name="esg_certifications">
-    <option value="">--Select--</option>
+  <select name="esg_certifications[]" multiple>
+    <option>EcoVadis</option>
+    <option>B Corp</option>
     <option>ISO 14001</option>
     <option>SA8000</option>
-    <option>GRI Standards</option>
+    <option>CDP</option>
     <option>Other</option>
   </select>
-  <textarea name="esg_certification_details" placeholder="Provide certificate numbers or additional info"></textarea>
+  <textarea name="esg_certifications_details" placeholder="e.g., EcoVadis Gold 2023, ISO 14001 (valid until 2026)"></textarea>
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
   </div>
 </div>
+
 <!-- Page 12: Sector Experience & Key Customers -->
 <div class="page">
   <h2>12. Sector Experience & Key Customers</h2>
+  <p>Domain expertise and market presence.</p>
 
-  <label>Years in Sector</label>
-  <input type="text" name="years_in_sector">
+  <!-- Years in Sector -->
+  <label>Years of Experience by Sector</label>
+  <div class="sector-years">
+    <label>Automotive: <input type="number" name="years_automotive" min="0" placeholder="e.g., 10"></label><br>
+    <label>Aerospace: <input type="number" name="years_aerospace" min="0" placeholder="e.g., 5"></label><br>
+    <label>Defence: <input type="number" name="years_defence" min="0" placeholder="e.g., 3"></label><br>
+    <label>Rail: <input type="number" name="years_rail" min="0" placeholder="e.g., 7"></label><br>
+    <label>Med-Tech: <input type="number" name="years_medtech" min="0" placeholder="e.g., 2"></label><br>
+    <label>Clean Tech: <input type="number" name="years_cleantech" min="0" placeholder="e.g., 4"></label>
+  </div>
 
+  <!-- Recent Programmes -->
   <label>Recent Programmes</label>
-  <textarea name="recent_programmes"></textarea>
+  <textarea name="recent_programmes" placeholder="e.g., JLR MLA Body Structures, Airbus A350 nacelle brackets"></textarea>
 
+  <!-- Export Markets -->
   <label>Export Markets</label>
-  <select name="export_markets">
-    <option value="">--Select--</option>
-    <option>Europe</option>
-    <option>Asia</option>
+  <select name="export_markets[]" multiple>
+    <option>UK</option>
+    <option>EU</option>
     <option>North America</option>
-    <option>South America</option>
+    <option>Asia</option>
+    <option>Middle East</option>
     <option>Africa</option>
-    <option>Australia</option>
+    <option>Oceania</option>
     <option>Other</option>
   </select>
-  <textarea name="export_markets_details" placeholder="Provide details about the markets"></textarea>
+  <textarea name="export_markets_details" placeholder="e.g., EU (Germany, France), Asia (Japan, South Korea)"></textarea>
 
+  <!-- Key Customers -->
   <label>Key Customers</label>
-  <textarea name="key_customers"></textarea>
+  <textarea name="key_customers" placeholder="e.g., Rolls-Royce, Siemens Mobility, GE Aviation"></textarea>
 
+  <!-- Navigation -->
   <div class="nav">
     <button type="button" onclick="prevPage()">&laquo; Back</button>
     <button type="button" onclick="nextPage()">Next &raquo;</button>
