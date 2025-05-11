@@ -74,6 +74,45 @@
         </div>
       </div>
 
+      <!-- Page 3: Accreditations & Approvals -->
+<div class="page" style="display: none;">
+  <h2>3. Accreditations & Approvals</h2>
+
+  <label class="required">Quality Management Certifications</label>
+  <select name="qms_certification" required>
+    <option value="">--Select--</option>
+    <option>ISO 9001</option>
+    <option>IATF 16949</option>
+    <option>AS9100</option>
+    <option>Other</option>
+  </select>
+  <input name="qms_cert_number" placeholder="Certificate Number">
+
+  <label>Nadcap Scopes</label>
+  <select name="nadcap_scope">
+    <option value="">--Select--</option>
+    <option>Welding</option>
+    <option>Heat Treating</option>
+    <option>Non-Destructive Testing</option>
+    <option>Surface Enhancement</option>
+    <option>Other</option>
+  </select>
+  <input name="nadcap_details" placeholder="Details">
+
+  <label>Other Standards</label>
+  <textarea name="other_standards" placeholder="Please specify any other relevant standards"></textarea>
+
+  <label>Certificate Expiry Dates</label>
+  <input name="certificate_expiry" type="date">
+
+  <label>Last Audit Date</label>
+  <input name="last_audit" type="date">
+
+  <div class="nav">
+    <button type="button" onclick="prevPage()">&laquo; Back</button>
+    <button type="button" onclick="nextPage()">Next &raquo;</button>
+  </div>
+</div>
       <!-- Repeat pattern for pages 3–13 based on your provided fields -->
 
       <div class="page">
