@@ -1,52 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WMMITAN Manufacturer Submission Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WMMITAN Manufacturer Registration</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-    form { background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    h2 { color: #003366; }
-    label { display: block; margin: 15px 0 5px; font-weight: bold; }
-    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    button { background: #005599; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2 { color: #003366; margin-bottom: 1rem; }
+    label { display: block; margin: 10px 0 5px; font-weight: bold; }
+    input, textarea, select { width: 100%; padding: 10px; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #005599; color: #fff; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
     button:hover { background: #003366; }
+    .page { display: none; }
+    .page.active { display: block; }
+    .nav { text-align: right; margin-top: 1rem; }
   </style>
 </head>
 <body>
-  <form name="submit-to-google-sheet">
-    <h2>Company Profile</h2>
-    <label>Legal Name</label><input name="legal_name" type="text" required>
-    <label>Trading Name</label><input name="trading_name" type="text">
-    <label>Company Number</label><input name="company_number" type="text">
-    <label>Contact Person</label><input name="contact_person" type="text">
-    <label>Email</label><input name="email" type="email" required>
-    <label>Phone</label><input name="phone" type="text">
-    <label>Year Founded</label><input name="year_founded" type="number">
+  <div class="container">
+    <form id="multiStepForm">
+      <div class="page active" id="page1">
+        <h2>1. Company Profile</h2>
+        <label>* Legal Name</label>
+        <input type="text" name="legal_name" required>
 
-    <h2>Manufacturing Capabilities</h2>
-    <label>Core Capabilities</label>
-    <textarea name="capabilities" rows="4" placeholder="e.g., CNC, 3D printing, injection moulding..."></textarea>
+        <label>Trading Name</label>
+        <input type="text" name="trading_name">
 
-    <h2>Sector Experience</h2>
-    <label>Experience Areas</label>
-    <textarea name="sectors" rows="3" placeholder="e.g., automotive, aerospace, clean tech..."></textarea>
+        <label>Companies House Number</label>
+        <input type="text" name="company_number" pattern="\d{8}">
 
-    <h2>Additional Notes</h2>
-    <textarea name="notes" rows="5" placeholder="Any other relevant information..."></textarea>
+        <label>* HQ Address</label>
+        <textarea name="hq_address" required></textarea>
 
-    <button type="submit">Submit</button>
-  </form>
+        <label>Site Addresses</label>
+        <textarea name="site_addresses"></textarea>
+
+        <label>* Contact Person</label>
+        <input type="text" name="contact_person" required>
+
+        <label>* Phone</label>
+        <input type="tel" name="phone" required>
+
+        <label>* Email</label>
+        <input type="email" name="email" required>
+
+        <label>Year Founded</label>
+        <input type="number" name="year_founded" min="1800" max="2025">
+
+        <label>Headcount</label>
+        <input type="number" name="headcount" min="1">
+
+        <label>Annual Turnover (GBP)</label>
+        <input type="number" step="0.01" name="turnover">
+
+        <label>* Ownership Structure</label>
+        <select name="ownership_structure" required>
+          <option value="">--Select--</option>
+          <option>Public</option>
+          <option>Private</option>
+          <option>Subsidiary</option>
+          <option>Other</option>
+        </select>
+
+        <label>D-U-N-S Number</label>
+        <input type="text" name="duns" pattern="\d{9}">
+
+        <label>Credit Rating</label>
+        <input type="text" name="credit_rating">
+
+        <label>Insurance Cover</label>
+        <textarea name="insurance"></textarea>
+
+        <div class="nav">
+          <button type="button" onclick="nextPage()">Next &raquo;</button>
+        </div>
+      </div>
+
+      <div class="page" id="page2">
+        <h2>2. Business & Financial</h2>
+        <label>Revenue Trends (3 yrs %)</label>
+        <input type="number" step="0.01" name="revenue_trends">
+
+        <label>Profitability Status</label>
+        <select name="profit_status">
+          <option value="">--Select--</option>
+          <option>Profitable</option>
+          <option>Break-even</option>
+          <option>Loss-making</option>
+        </select>
+
+        <label>Export Markets</label>
+        <textarea name="export_markets"></textarea>
+
+        <label>Key Customers</label>
+        <textarea name="key_customers"></textarea>
+
+        <div class="nav">
+          <button type="button" onclick="prevPage()">&laquo; Back</button>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_URL_HERE/exec'; // Replace with your Web App URL
-    const form = document.forms['submit-to-google-sheet'];
-    form.addEventListener('submit', e => {
+    let current = 0;
+    const pages = document.querySelectorAll(".page");
+
+    function showPage(index) {
+      pages.forEach((page, i) => {
+        page.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextPage() {
+      if (current < pages.length - 1) {
+        current++;
+        showPage(current);
+      }
+    }
+
+    function prevPage() {
+      if (current > 0) {
+        current--;
+        showPage(current);
+      }
+    }
+
+    document.getElementById("multiStepForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => alert('Thank you! Your form was submitted successfully.'))
-        .catch(error => alert('Submission failed. Please try again.'));
+      alert("Form submitted. You can now connect this to Google Sheets.");
     });
   </script>
 </body>
